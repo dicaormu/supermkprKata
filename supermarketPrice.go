@@ -3,23 +3,16 @@ package main
 import "fmt"
 import "supermarketPrice/super"
 
+
+/*
+for information about switch:
+https://tour.golang.org/flowcontrol/9
+*/
 func calculatePromotions(baskets ... super.Basket) float64 {
 	totalPrice := float64(0)
-	promo := 0
-	for _, basket := range baskets {
-		price, inPromo := basket.ComputeBasketPrice()
-		totalPrice = totalPrice + price
-		promo += inPromo
-	}
-	switch promo {
-	case 0, 1:
-	case 2:
-		totalPrice = totalPrice - 5
-	case 3:
-		totalPrice = totalPrice - totalPrice*0.1 - 5
-	default:
-		totalPrice = totalPrice - 5 - float64(2*promo)
-	}
+	//todo compute basket price for all  baskets
+
+	//todo compute value of additional promos
 	return totalPrice
 }
 
