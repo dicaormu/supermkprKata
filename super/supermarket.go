@@ -9,6 +9,7 @@ for more about imports see https://tour.golang.org/basics/2
 import (
 	"math"
 	"time"
+	"fmt"
 )
 
 /**
@@ -39,11 +40,18 @@ type Stock struct {
 for more about functions see https://tour.golang.org/basics/4
 */
 func (s Stock) SellProduct(selection ProductSelection) {
-	for _, item := range s.Contents {
-		if item == selection {
-			amt := int(math.Min(float64(item.Amt), float64(selection.Amt)))
-			item.Amt -= amt
+	in:=-1
+	amt:=-1
+	for index, item := range s.Contents {
+		if item.Prod.Name==selection.Prod.Name {
+			amt = int(math.Min(float64(item.Amt), float64(selection.Amt)))
+			amt=item.Amt-amt
+			in=index
 		}
+	}
+	fmt.Println(amt)
+	if in>-1{
+		s.Contents[in].Amt=amt
 	}
 }
 
