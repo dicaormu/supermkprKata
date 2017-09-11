@@ -3,14 +3,12 @@ for more about package see: https://tour.golang.org/basics/1
 */
 package super
 
-
 /**
 for more about imports see https://tour.golang.org/basics/2
 */
 import (
-	"math"
+	"errors"
 )
-
 
 /**
 for more about types see https://tour.golang.org/moretypes/2
@@ -36,15 +34,9 @@ type Stock struct {
 
 /**
 for more about functions see https://tour.golang.org/basics/4
+https://gobyexample.com/range
 */
-func (s Stock ) sellProduct(  selection ProductSelection){
-	for _, item := range s.contents {
-		if item==selection {
-			amt := int(math.Min(float64(item.Amt), float64(selection.Amt)))
-			item.Amt-=amt
-		}
-	}
+func (s *Stock) sellProduct(selection ProductSelection) {
+	//todo iterate over the selection contents and make the stock amount of each product, the good amout after selling this selection
+	errors.New("Not implemented")
 }
-
-
-
