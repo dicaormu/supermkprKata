@@ -44,27 +44,27 @@ func initSupermarket() Stock {
 }
 
 func (app *App) getProducts(writer http.ResponseWriter, request *http.Request) {
-	respondWithJSON(writer, http.StatusOK, app.Stock.Contents)
+	//todo respond with json
 }
 
 func (app *App) buy(writer http.ResponseWriter, request *http.Request) {
 	vars := mux.Vars(request)
 	name := vars["name"]
 
-	product, err := app.findProduct(name)
-	if err != nil {
-		respondWithError(writer, http.StatusBadRequest, "Error finding a product")
-		return
-	}
+	//todo find product
+
+	//todo if error respond with error
+
 	var p ProductSelection
+	//use jsondecoder
 	decoder := json.NewDecoder(request.Body)
-	if err := decoder.Decode(&p); err != nil {
-		respondWithError(writer, http.StatusBadRequest, "Invalid request amount")
-		return
-	}
+	// todo ir error respondWithError
+
 	defer request.Body.Close()
 
-	app.Stock.SellProduct(ProductSelection{Prod: product, Amt: p.Amt})
+	//todo sell product
+
+	//respond with Json
 	respondWithJSON(writer, http.StatusCreated, p)
 }
 
