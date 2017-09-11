@@ -19,3 +19,48 @@ Si vous achetez au moins 3  types de produit, vous aurez $5, et 10% de réductio
 Si  vous achetez au moins 4  types de produit, vous aurez $5 et $2 pour chaque type different de produit en promotion, en plus.
 
 But: découvrir les variadic functions et les multiple return values et le switch
+
+Step 3
+Nous allons publier une interface rest basique pour gerer notre cadie.
+Nous allons utiliser dep pour creer notre projet
+L'interface aura une methode post pour acheter un produit une methode get pour obtenir la liste de produits disponibles
+Nous allons utiliser la dependence "github.com/gorilla/mux" pour créer le router
+
+hint: https://github.com/golang/dep
+
+ 1. dans le repertoire principal du projet:
+
+````
+    $ dep init
+````
+ça fait la creation de plusieurs fichiers et un repertoire "vendor".
+
+La commande principale à utiliser:
+
+````
+    $ dep ensure
+````
+vous pouvez la tester:
+
+````
+    $ dep help ensure
+````
+
+et vous pouvez regarder l'état des dépendences
+
+````
+    $ dep status
+````
+
+vous pouvez installer graphviz
+````
+    $ brew install graphviz
+````
+
+et visualizer les dépendences
+
+````
+    $ dep status -dot | dot -T png | open -f -a /Applications/Preview.app
+````
+
+

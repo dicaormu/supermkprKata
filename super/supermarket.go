@@ -40,7 +40,7 @@ for more about functions see https://tour.golang.org/basics/4
 */
 func (s Stock) SellProduct(selection ProductSelection) {
 	for _, item := range s.Contents {
-		if item == selection {
+		if item.Prod.Name == selection.Prod.Name {
 			amt := int(math.Min(float64(item.Amt), float64(selection.Amt)))
 			item.Amt -= amt
 		}

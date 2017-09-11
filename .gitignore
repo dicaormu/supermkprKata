@@ -1,3 +1,8 @@
 *.iml
 modules.xml
 vcs.xml
+.DS_Store
+.idea/
+Gopkg.lock
+supermarketPrice
+vendor/

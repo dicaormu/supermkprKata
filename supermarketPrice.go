@@ -1,7 +1,13 @@
 package main
 
-import "fmt"
-import "supermarketPrice/super"
+import (
+	"supermarketPrice/super"
+	"html"
+	"log"
+	"net/http"
+
+	"fmt"
+)
 
 func calculatePromotions(baskets ... super.Basket) float64 {
 	totalPrice := float64(0)
@@ -23,12 +29,16 @@ func calculatePromotions(baskets ... super.Basket) float64 {
 	return totalPrice
 }
 
-//you can init an array for example: b := [2]string{"Penn", "Teller"} or b := [...]string{"Penn", "Teller"}
-//or you can init an slice, for example: letters := []string{"a", "b", "c", "d"} or s = make([]byte, 5, 5)
+/*This function is just to show how routing works*/
+func handleGet() {
+	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		fmt.Fprintf(w, "Hello, %q", html.EscapeString(r.URL.Path))
+	})
+	log.Fatal(http.ListenAndServe(":8080", nil))
+}
+
 func main() {
-	fmt.Println("--- Supermarket Price ---")
-	product := super.Product{Price: 10, Name: "lovea nature", Discount: 0}
-	productSelection := super.ProductSelection{Amt: 10, Prod: product}
-	stock := super.Stock{Contents: []super.ProductSelection{productSelection}}
-	stock.SellProduct(productSelection)
+	app := super.App{}
+	app.Initialize()
+	app.Run(":8080")
 }

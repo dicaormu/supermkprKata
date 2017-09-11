@@ -3,7 +3,7 @@ package main
 import (
 	"supermarketPrice/super"
 	"testing"
-	"github.com/magiconair/properties/assert"
+	"github.com/stretchr/testify/assert"
 )
 
 func TestCalculatePromotionsNoPromotion(t *testing.T) {
